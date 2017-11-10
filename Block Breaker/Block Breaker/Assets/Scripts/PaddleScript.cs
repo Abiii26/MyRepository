@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PaddleScript : MonoBehaviour {
 
+
 	// Use this for initialization
 	void Start () {
 		
@@ -13,9 +14,14 @@ public class PaddleScript : MonoBehaviour {
 	void Update () {
         print(Input.mousePosition.x);
 
-        Vector3 newPaddlePos = new Vector3(Input.mousePosition.x,
+        float mousePosInUnits = (Input.mousePosition.x / Screen.width * 16)-8;
+
+        Vector3 newPaddlePos = new Vector3(mousePosInUnits,
             gameObject.transform.position.y, gameObject.transform.position.z);
 
-        gameObject.transform.position = newPaddlePos;
+        newPaddlePos.x = Mathf.Clamp(mousePosInUnits, -7.5f, 7.5f);
+
+
+        this.transform.position = newPaddlePos;
 	}
 }
