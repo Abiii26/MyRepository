@@ -21,7 +21,7 @@ public class LoseBorderScript : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        print("Trigger");
+        //print("Trigger");
         levelManager.LoadNewScene("Lose");
     }
 }

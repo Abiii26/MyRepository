@@ -17,7 +17,23 @@ public class LevelManager : MonoBehaviour {
 
     public void LoadNewScene(string sceneName)
     {
+        Brick.breakableCount = 0;
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void LoadNextScene()
+    {
+        Brick.breakableCount = 0;
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentScene+1);
+    }
+
+    public void BrickDestroy()
+    {
+        if(Brick.breakableCount <= 0)
+        {
+            LoadNextScene();
+        }
     }
 
     public void QuitGame()
